@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gonzalo Fuentes · ML Engineer en CENIA y co-creador de LatamGPT</title>
+<meta name="description" content="Gonzalo Fuentes es ML Engineer en CENIA (Chile) y co-creador de LatamGPT, la primera familia de modelos de lenguaje entrenada para Latinoamérica. Lidera evaluación, pre-training y post-training.">
+<meta name="author" content="Gonzalo Fuentes">
+<link rel="canonical" href="https://gonzalofuentes1.github.io/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0f172a">
+
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Gonzalo Fuentes">
+<meta property="og:title" content="Gonzalo Fuentes · ML Engineer en CENIA y co-creador de LatamGPT">
+<meta property="og:description" content="LLMs de punta a punta (pretraining, post-training, datos y evaluación) en LatamGPT, e investigación en world models.">
+<meta property="og:url" content="https://gonzalofuentes1.github.io/">
+<meta property="og:image" content="https://gonzalofuentes1.github.io/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Gonzalo Fuentes, ML Engineer en CENIA y co-creador de LatamGPT">
+<meta property="og:locale" content="es_CL">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="profile:first_name" content="Gonzalo">
+<meta property="profile:last_name" content="Fuentes">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gonzalo Fuentes · ML Engineer en CENIA y co-creador de LatamGPT">
+<meta name="twitter:description" content="LLMs de punta a punta en LatamGPT e investigación en world models.">
+<meta name="twitter:image" content="https://gonzalofuentes1.github.io/assets/og-image.jpg">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://gonzalofuentes1.github.io/#person",
+  "name": "Gonzalo Fuentes",
+  "alternateName": "Gonzalo Fuentes Olivares",
+  "givenName": "Gonzalo",
+  "familyName": "Fuentes",
+  "url": "https://gonzalofuentes1.github.io/",
+  "image": "https://gonzalofuentes1.github.io/assets/gonzalo-fuentes-512.jpg",
+  "jobTitle": "ML Engineer",
+  "description": "ML Engineer en CENIA y co-creador de LatamGPT. Lidera evaluación, pre-training y post-training en LatamGPT e investiga world models.",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "CENIA, Centro Nacional de Inteligencia Artificial",
+    "url": "https://cenia.cl"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Pontificia Universidad Católica de Chile",
+    "url": "https://www.uc.cl"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Santiago",
+    "addressCountry": "CL"
+  },
+  "knowsAbout": ["Large language models", "Pretraining", "Post-training", "LLM evaluation", "Data curation", "World models", "Reinforcement learning", "Machine learning"],
+  "knowsLanguage": ["es", "en"],
+  "sameAs": [
+    "https://github.com/GonzaloFuentes1",
+    "https://huggingface.co/GonzaloFuentes1",
+    "https://www.linkedin.com/in/gonzalo-fuentes-olivares-850bb12a7/"
+  ]
+}
+</script>
+
+<style>
+:root{
+  --bg:#f8fafc;--surface:#ffffff;--text:#0f172a;--muted:#475569;--line:#e2e8f0;
+  --accent:#0369a1;--accent-soft:#e0f2fe;--chip:#f1f5f9;
+}
+@media (prefers-color-scheme: dark){
+  :root{--bg:#0b1220;--surface:#111a2e;--text:#e2e8f0;--muted:#94a3b8;--line:#1e293b;
+        --accent:#38bdf8;--accent-soft:#0c2a40;--chip:#16213a;}
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font:17px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif}
+a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:6px}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:200px 1fr;gap:36px;align-items:center}
+.hero img{width:200px;height:250px;object-fit:cover;border-radius:16px;display:block;
+  box-shadow:0 8px 24px rgba(15,23,42,.15)}
+h1{font-size:2.5rem;line-height:1.1;margin:0 0 8px;letter-spacing:-.02em}
+.role{font-size:1.15rem;color:var(--muted);margin:0 0 4px}
+.role strong{color:var(--text);font-weight:600}
+.place{color:var(--muted);margin:0 0 20px;font-size:.95rem}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border:1px solid var(--line);
+  border-radius:999px;background:var(--surface);color:var(--text);text-decoration:none;font-size:.95rem}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn svg{width:18px;height:18px;flex:none}
+main section{padding:36px 0;border-bottom:1px solid var(--line)}
+h2{font-size:1.35rem;margin:0 0 14px;letter-spacing:-.01em}
+h3{font-size:1.05rem;margin:22px 0 8px}
+p{margin:0 0 12px}
+ul.plain{margin:0;padding-left:20px}
+ul.plain li{margin:6px 0}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:0;padding:0;list-style:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card a{font-weight:600}
+.card p{margin:4px 0 0;color:var(--muted);font-size:.93rem;line-height:1.5}
+.callout{background:var(--accent-soft);border-radius:12px;padding:18px 20px}
+.callout p:last-child{margin:0}
+.contact dl{display:grid;grid-template-columns:max-content 1fr;gap:8px 18px;margin:0}
+.contact dt{color:var(--muted)}
+.contact dd{margin:0;overflow-wrap:anywhere}
+footer{padding:28px 0 48px;color:var(--muted);font-size:.9rem}
+@media (max-width:640px){
+  body{font-size:16px}
+  header.hero{padding:36px 0 28px}
+  .hero-grid{grid-template-columns:1fr;gap:20px}
+  .hero img{width:144px;height:180px}
+  h1{font-size:2rem}
+  .cards{grid-template-columns:1fr}
+  .contact dl{grid-template-columns:1fr;gap:2px}
+  .contact dd{margin-bottom:10px}
+}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap hero-grid">
+    <picture>
+      <source srcset="assets/gonzalo-fuentes.webp" type="image/webp">
+      <img src="assets/gonzalo-fuentes.jpg" width="480" height="600" alt="Retrato de Gonzalo Fuentes" fetchpriority="high">
+    </picture>
+    <div>
+      <h1>Gonzalo Fuentes</h1>
+      <p class="role"><strong>ML Engineer en <a href="https://cenia.cl">CENIA</a></strong> · co-creador de <a href="https://www.latamgpt.org/">LatamGPT</a></p>
+      <p class="place">Santiago, Chile · MSc, Pontificia Universidad Católica de Chile</p>
+      <ul class="links" aria-label="Perfiles y contacto">
+        <li><a class="btn" href="https://github.com/GonzaloFuentes1" rel="me"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>GitHub</a></li>
+        <li><a class="btn" href="https://www.linkedin.com/in/gonzalo-fuentes-olivares-850bb12a7/" rel="me"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M0 1.15C0 .52.52 0 1.18 0h13.64C15.48 0 16 .52 16 1.15v13.7c0 .63-.52 1.15-1.18 1.15H1.18C.52 16 0 15.48 0 14.85V1.15Zm4.94 12.24V6.17H2.54v7.22h2.4ZM3.74 5.18c.84 0 1.36-.55 1.36-1.25-.02-.71-.52-1.25-1.34-1.25-.82 0-1.36.54-1.36 1.25 0 .7.52 1.25 1.33 1.25h.01Zm4.91 8.21V9.36c0-.22.02-.43.08-.59.17-.43.57-.88 1.23-.88.87 0 1.21.66 1.21 1.63v3.87h2.4V9.25c0-2.22-1.18-3.25-2.76-3.25-1.27 0-1.84.7-2.16 1.19v.03h-.02l.02-.03V6.17h-2.4c.03.68 0 7.22 0 7.22h2.4Z"/></svg>LinkedIn</a></li>
+        <li><a class="btn" href="https://huggingface.co/GonzaloFuentes1" rel="me"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><circle cx="8" cy="8" r="7" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="5.6" cy="6.6" r="1"/><circle cx="10.4" cy="6.6" r="1"/><path d="M5 9.6c.7 1.2 1.7 1.8 3 1.8s2.3-.6 3-1.8" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>Hugging Face</a></li>
+        <li><a class="btn js-mail" href="#contacto" data-u="setneuf.olaznog" data-d="lc.ainec"><svg viewBox="0 0 16 16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1.5" y="3" width="13" height="10" rx="1.5"/><path d="m2 4 6 5 6-5"/></svg>Email</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section aria-labelledby="sobre">
+    <h2 id="sobre">Sobre mí</h2>
+    <p>Soy ML Engineer en <a href="https://cenia.cl">CENIA</a>, el Centro Nacional de Inteligencia Artificial de Chile, y co-creador de <a href="https://www.latamgpt.org/">LatamGPT</a>, la primera familia de modelos de lenguaje entrenada para Latinoamérica. En LatamGPT lidero las áreas de evaluación, pre-training y post-training.</p>
+    <p>Trabajo con LLMs de punta a punta, desde los datos y el pretraining hasta el post-training y la evaluación, con foco en el español y el portugués de la región. En paralelo investigo world models para planificación y aprendizaje por refuerzo basado en modelos (Dreamer, JEPA).</p>
+  </section>
+
+  <section aria-labelledby="latamgpt">
+    <h2 id="latamgpt">Trabajo en LatamGPT</h2>
+    <ul class="plain">
+      <li><strong>Pre-training:</strong> continued pretraining de Llama 3.1 70B y consolidación de checkpoints distribuidos con tensor parallelism a formato Hugging Face.</li>
+      <li><strong>Post-training:</strong> SFT de OLMo-3 con mezclas de datos en español y de Latinoamérica, y datos sintéticos de SFT y de preferencias (personas, Constitutional AI).</li>
+      <li><strong>Datos:</strong> clasificadores de calidad etiquetados con LLMs y filtrado de toxicidad para corpus de pretraining en español y de Latinoamérica.</li>
+      <li><strong>Evaluación:</strong> <a href="https://huggingface.co/datasets/latam-gpt/Trueque-Benchmark-beta-0.1">Trueque</a>, un benchmark revisado por personas con preguntas sobre conocimiento y cultura de 20 países de Latinoamérica.</li>
+    </ul>
+  </section>
+
+  <section aria-labelledby="ruta">
+    <h2 id="ruta">LLM Learning Route</h2>
+    <div class="callout">
+      <p><a href="https://gonzalofuentes1.github.io/llm-learning-route/"><strong>LatamGPT Engineering Hub</strong></a> es una ruta abierta para aprender a construir LLMs, desde los fundamentos hasta el estado del arte. Nació en LatamGPT y está escrita en español: cubre datos, pretraining, post-training, evaluación, seguridad, serving, agentes e interpretabilidad, con guías prácticas con código.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="proyectos">
+    <h2 id="proyectos">Proyectos</h2>
+    <h3>Entrenamiento de LLMs</h3>
+    <ul class="cards">
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/parallelism-from-scratch">parallelism-from-scratch</a><p>DDP, ZeRO-1/2 y paralelismo de tensores y de pipeline para un Llama pequeño, con tests de paridad en float64.</p></li>
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/post-training-from-scratch">post-training-from-scratch</a><p>SFT con packing y masking, DPO/IPO/SimPO y GRPO/Dr.GRPO/DAPO, cada uno con tests de invariantes.</p></li>
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/llama3-70b-dcp-to-hf">llama3-70b-dcp-to-hf</a><p>Convierte checkpoints DCP fragmentados (TP=8) de un pretraining de Llama 3 70B a safetensors de Hugging Face.</p></li>
+    </ul>
+    <h3>Datos para LLMs</h3>
+    <ul class="cards">
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/limpia">limpia</a><p>Curación de datos de pretraining en español y de Latinoamérica: heurísticas de calidad, dedup MinHash, limpieza de PII y descontaminación.</p></li>
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/quality-filter">quality-filter</a><p>Clasificador de calidad de texto destilado de un LLM juez, con filtrado por lotes.</p></li>
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/constitutional-ai-data-pipeline">constitutional-ai-data-pipeline</a><p>Pipeline en vLLM de red-team, crítica y revisión que produce datos de SFT y pares de preferencias.</p></li>
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/magpie-persona-gen">magpie-persona-gen</a><p>Conversaciones sintéticas de SFT condicionadas en personas, con filtrado y dedup.</p></li>
+    </ul>
+    <h3>World models</h3>
+    <ul class="cards">
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/dreamer4">dreamer4</a><p>Re-implementación no oficial de Dreamer 4: tokenizer, dinámica y RL en imaginación sobre DMControl.</p></li>
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/dreamer-core">dreamer-core</a><p>Bloques testeados de world models estilo DreamerV3: RSSM, KL balancing, cabezas symlog two-hot y λ-returns.</p></li>
+    </ul>
+    <h3>Herramientas</h3>
+    <ul class="cards">
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/light-anonymizer">light-anonymizer</a><p>App de escritorio offline que anonimiza PII en PDFs e imágenes, con verificación de fugas y reporte de auditoría.</p></li>
+      <li class="card"><a href="https://github.com/GonzaloFuentes1/skill-agents">skill-agents</a><p>Plugin de Claude Code que asigna subagentes por modelo y esfuerzo, con observabilidad y un flujo git estricto.</p></li>
+    </ul>
+    <p style="margin-top:16px"><a href="https://github.com/GonzaloFuentes1?tab=repositories">Ver todos los repositorios en GitHub</a></p>
+  </section>
+
+  <section aria-labelledby="contacto" class="contact">
+    <h2 id="contacto">Contacto</h2>
+    <dl>
+      <dt>Email (CENIA)</dt>
+      <dd><a class="js-mail" href="#contacto" data-u="setneuf.olaznog" data-d="lc.ainec">gonzalo.fuentes [arroba] cenia.cl</a></dd>
+      <dt>Email (UC)</dt>
+      <dd><a class="js-mail" href="#contacto" data-u="setneuf.olaznog" data-d="lc.cu">gonzalo.fuentes [arroba] uc.cl</a></dd>
+      <dt>LinkedIn</dt>
+      <dd><a href="https://www.linkedin.com/in/gonzalo-fuentes-olivares-850bb12a7/" rel="me">linkedin.com/in/gonzalo-fuentes-olivares-850bb12a7</a></dd>
+      <dt>GitHub</dt>
+      <dd><a href="https://github.com/GonzaloFuentes1" rel="me">github.com/GonzaloFuentes1</a></dd>
+      <dt>Hugging Face</dt>
+      <dd><a href="https://huggingface.co/GonzaloFuentes1" rel="me">huggingface.co/GonzaloFuentes1</a></dd>
+    </dl>
+  </section>
+
+  <section aria-labelledby="english" lang="en">
+    <h2 id="english">In English</h2>
+    <p>I am an ML Engineer at <a href="https://cenia.cl">CENIA</a>, Chile's National Center for Artificial Intelligence, and a co-creator of <a href="https://www.latamgpt.org/en">LatamGPT</a>, the first family of LLMs trained for Latin America, where I lead evaluation, pre-training and post-training. I work on LLMs end to end (data, pretraining, post-training and evaluation) with a focus on Spanish and Portuguese, and I research world models for planning and model-based RL. Reach me through the links above.</p>
+  </section>
+</main>
+
+<footer class="wrap">
+  <p>© 2026 Gonzalo Fuentes · Santiago, Chile</p>
+</footer>
+
+<script>
+document.querySelectorAll('.js-mail').forEach(function (a) {
+  var r = function (s) { return s.split('').reverse().join(''); };
+  var addr = r(a.dataset.u) + '@' + r(a.dataset.d);
+  a.href = 'mailto:' + addr;
+  if (a.textContent.indexOf('[arroba]') !== -1) a.textContent = addr;
+});
+</script>
+</body>
+</html>
