@@ -92,7 +92,9 @@ p{margin:0 0 12px}
 .logo.icon svg{width:24px;height:24px}
 .logo.gh{background:#111827;border:0;color:#fff}
 .logo.gh svg{width:26px;height:26px}
-.card h3{font-size:1.02rem;margin:0 0 6px;line-height:1.35}
+.card h3,.card h4{font-size:1.02rem;margin:0 0 6px;line-height:1.35}
+h3.group{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:26px 0 12px}
+h2+h3.group{margin-top:4px}
 .card p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.5}
 .card .meta{margin-top:8px;font-size:.88rem}
 .tag{display:inline-block;font-size:.75rem;font-weight:600;padding:2px 9px;border-radius:999px;

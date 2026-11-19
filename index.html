@@ -115,6 +115,7 @@
           <li><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Santiago, Chile</li>
           <li><img src="assets/logos/uc.png" alt="" width="26" height="26">Ingeniero Civil Matemático y Computacional, UC</li>
           <li><img src="assets/logos/uc.png" alt="" width="26" height="26">Magíster en Ciencias de la Ingeniería (en curso), UC</li>
+          <li><img src="assets/logos/uc.png" alt="" width="26" height="26">Ayudante en la UC: IA Generativa (2026), Inteligencia Artificial (2022–2024) y Minería de Datos (2024)</li>
         </ul>
       </div>
       <picture class="photo">
@@ -192,26 +193,51 @@
   </section>
 
   <section id="proyectos" aria-labelledby="h-proy">
-    <h2 id="h-proy">Proyectos personales</h2>
+    <h2 id="h-proy">Proyectos</h2>
+    <h3 class="group">Código abierto para LLMs</h3>
+    <ul class="cards two">
+      <li class="card">
+        <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M10 3l1.8 4.7L16.5 9.5l-4.7 1.8L10 16l-1.8-4.7L3.5 9.5l4.7-1.8Z"/><path d="M18 14l.9 2.1L21 17l-2.1.9L18 20l-.9-2.1L15 17l2.1-.9Z"/></svg></span>
+        <div>
+          <h4><a href="https://github.com/GonzaloFuentes1/limpia">limpia</a></h4>
+          <p>Curación de datos de pretraining para texto latinoamericano en español y portugués: reglas de calidad de Gopher y FineWeb, deduplicación MinHash, limpieza de datos personales y descontaminación de benchmarks.</p>
+        </div>
+      </li>
+      <li class="card">
+        <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><path d="M10 6.5h4M10 17.5h4M6.5 10v4M17.5 10v4"/></svg></span>
+        <div>
+          <h4><a href="https://github.com/GonzaloFuentes1/parallelism-from-scratch">parallelism-from-scratch</a></h4>
+          <p>Paralelismo de datos, ZeRO 1 y 2, y paralelismo de tensores y de pipeline aplicados a un Llama pequeño, cada uno verificado contra una referencia en float64.</p>
+        </div>
+      </li>
+      <li class="card">
+        <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></span>
+        <div>
+          <h4><a href="https://github.com/GonzaloFuentes1/post-training-from-scratch">post-training-from-scratch</a></h4>
+          <p>SFT con packing, DPO, IPO, SimPO, GRPO y DAPO implementados desde cero, con tests que verifican las propiedades de cada objetivo.</p>
+        </div>
+      </li>
+    </ul>
+    <h3 class="group">Proyectos personales</h3>
     <ul class="cards two">
       <li class="card">
         <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5.5A2.5 2.5 0 0 1 5.5 3H11v16H5.5A2.5 2.5 0 0 0 3 21.5Z"/><path d="M21 5.5A2.5 2.5 0 0 0 18.5 3H13v16h5.5a2.5 2.5 0 0 1 2.5 2.5Z"/></svg></span>
         <div>
-          <h3><a href="https://gonzalofuentes1.github.io/llm-learning-route/">LLM Learning Route</a></h3>
+          <h4><a href="https://gonzalofuentes1.github.io/llm-learning-route/">LLM Learning Route</a></h4>
           <p>Ruta abierta en español para aprender a construir LLMs, desde los fundamentos hasta el estado del arte, con guías prácticas con código.</p>
         </div>
       </li>
       <li class="card">
         <span class="logo gh"><svg viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></span>
         <div>
-          <h3><a href="https://github.com/GonzaloFuentes1/dreamer4">dreamer4</a></h3>
+          <h4><a href="https://github.com/GonzaloFuentes1/dreamer4">dreamer4</a></h4>
           <p>Re-implementación no oficial de Dreamer 4 en PyTorch: tokenizer, dinámica y RL en imaginación sobre DMControl.</p>
         </div>
       </li>
       <li class="card">
         <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><rect x="2" y="5" width="6" height="6" rx="1"/><rect x="9" y="5" width="6" height="6" rx="1"/><rect x="16" y="5" width="6" height="6" rx="1"/><rect x="9" y="12" width="6" height="6" rx="1"/></svg></span>
         <div>
-          <h3><a href="https://github.com/GonzaloFuentes1/TetrisNNA-GA">TetrisNNA-GA</a></h3>
+          <h4><a href="https://github.com/GonzaloFuentes1/TetrisNNA-GA">TetrisNNA-GA</a></h4>
           <p>IA que aprende a jugar Tetris: un algoritmo genético evoluciona su función de evaluación sobre 13 características del tablero, con partidas en paralelo.</p>
           <p class="meta"><a href="https://www.youtube.com/watch?v=io2GUmA6d0o">Ver demo en YouTube</a></p>
         </div>
@@ -219,8 +245,15 @@
       <li class="card">
         <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cx="12" cy="12" r="9.5"/><path d="m12 7.2 4 2.9-1.5 4.7h-5L8 10.1Z" fill="currentColor"/><path d="M12 7.2V2.5M16 10.1l4.4-1.5M14.5 14.8l2.8 3.9M9.5 14.8l-2.8 3.9M8 10.1 3.6 8.6"/></svg></span>
         <div>
-          <h3><a href="https://github.com/GonzaloFuentes1/BielsIA">BielsIA</a></h3>
+          <h4><a href="https://github.com/GonzaloFuentes1/BielsIA">BielsIA</a></h4>
           <p>Recomendador de fichajes de fútbol con redes neuronales de grafos (GCN, GAT, Graphormer) que modela cómo encajaría un jugador en un equipo nuevo.</p>
+        </div>
+      </li>
+      <li class="card">
+        <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6Z"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>
+        <div>
+          <h4><a href="https://github.com/GonzaloFuentes1/light-anonymizer">light-anonymizer</a></h4>
+          <p>App de escritorio que anonimiza PDFs e imágenes sin sacarlos del computador, para que funcionarios públicos chilenos publiquen documentos: detecta RUT, nombres, rostros y firmas, y entrega un reporte de auditoría.</p>
         </div>
       </li>
     </ul>
