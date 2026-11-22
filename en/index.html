@@ -99,6 +99,7 @@
     <li><a href="#latamgpt">LatamGPT</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#notes">Notes</a></li>
     <li><a href="#contact">Contact</a></li>
     <li class="lang"><a href="../" hreflang="es" lang="es">Español</a></li>
   </ul>
@@ -254,6 +255,20 @@
         <div>
           <h4><a href="https://github.com/GonzaloFuentes1/light-anonymizer">light-anonymizer</a></h4>
           <p>A desktop app that anonymizes PDFs and images without them leaving the computer, built for Chilean public officials who publish documents: it finds IDs, names, faces and signatures, and produces an audit report.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="notes" aria-labelledby="h-notes">
+    <h2 id="h-notes">Notes</h2>
+    <ul class="cards">
+      <li class="card">
+        <span class="logo icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8Z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span>
+        <div>
+          <h3><a href="notes/llm-jepa-audit.html">Auditing LLM-JEPA: the gain disappears once the baseline learns to stop</a></h3>
+          <p>A reproduction of LLM-JEPA fine-tuning on NL-RX-SYNTH with Llama-3.2-1B. The reported gain comes from a padding fallback that removes every end-of-turn target; with a dedicated pad token, regular fine-tuning reaches 83.7% and LLM-JEPA adds nothing. SIGReg does not help either.</p>
+          <p class="meta">November 2026 · <a href="https://github.com/GonzaloFuentes1/llm-jepa-sigreg">Code and logs</a> · <a href="https://github.com/galilai-group/llm-jepa/pull/11">Upstream fix</a></p>
         </div>
       </li>
     </ul>

@@ -142,3 +142,29 @@ footer{padding:24px 0 40px;color:var(--muted);font-size:.88rem}
   .logo{width:42px;height:42px;border-radius:10px}
 }
 @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+
+/* Notes (long-form posts) */
+.post-nav{padding-top:26px;font-size:.95rem}
+.post-nav a{text-decoration:none;color:var(--muted)}
+.post-nav a:hover{color:var(--accent)}
+.post{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px 34px;margin:16px 0 30px;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:var(--shadow)}
+.post h1{font-size:2rem;line-height:1.15;margin:0 0 10px}
+.post .byline{color:var(--muted);font-size:.93rem;margin:0 0 22px}
+.post h2{font-size:1.25rem;margin:32px 0 10px}
+.post p,.post li{line-height:1.7}
+.post code{font:.86em/1.4 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;background:var(--accent-soft);
+  padding:1px 6px;border-radius:6px;overflow-wrap:anywhere}
+.table-wrap{overflow-x:auto;margin:16px 0 18px;border:1px solid var(--line);border-radius:14px}
+.table-wrap table{border-collapse:collapse;width:100%;font-size:.94rem;font-variant-numeric:tabular-nums}
+.table-wrap th,.table-wrap td{padding:9px 14px;text-align:right;white-space:nowrap;border-bottom:1px solid var(--line)}
+.table-wrap th[scope="row"],.table-wrap thead th:first-child{text-align:left;font-weight:600}
+.table-wrap thead th{color:var(--muted);font-weight:600;background:var(--accent-soft)}
+.table-wrap tbody tr:last-child>*{border-bottom:0}
+@media (max-width:640px){
+  .post{padding:20px 18px;border-radius:18px}
+  .post h1{font-size:1.55rem}
+  .table-wrap table{font-size:.84rem}
+  .table-wrap th,.table-wrap td{padding:7px 8px}
+  .table-wrap th[scope="row"],.table-wrap thead th{white-space:normal}
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auditing LLM-JEPA: the gain disappears once the baseline learns to stop · Gonzalo Fuentes</title>
+<meta name="description" content="A reproduction of LLM-JEPA fine-tuning on NL-RX-SYNTH with Llama-3.2-1B: the reported gain comes from a pad = eos fallback that removes every end-of-turn target; with a dedicated pad token it disappears.">
+<meta name="author" content="Gonzalo Fuentes">
+<link rel="canonical" href="https://gonzalofuentes1.github.io/en/notes/llm-jepa-audit.html">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0a0d1a">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Gonzalo Fuentes">
+<meta property="og:title" content="Auditing LLM-JEPA: the gain disappears once the baseline learns to stop">
+<meta property="og:description" content="A reproduction of LLM-JEPA fine-tuning on NL-RX-SYNTH with Llama-3.2-1B: the reported gain comes from a pad = eos fallback that removes every end-of-turn target; with a dedicated pad token it disappears.">
+<meta property="og:url" content="https://gonzalofuentes1.github.io/en/notes/llm-jepa-audit.html">
+<meta property="og:image" content="https://gonzalofuentes1.github.io/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="https://gonzalofuentes1.github.io/en/">
+<meta property="article:published_time" content="2026-11-22">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Auditing LLM-JEPA: the gain disappears once the baseline learns to stop">
+<meta name="twitter:description" content="A reproduction of LLM-JEPA fine-tuning on NL-RX-SYNTH with Llama-3.2-1B: the reported gain comes from a pad = eos fallback that removes every end-of-turn target; with a dedicated pad token it disappears.">
+<meta name="twitter:image" content="https://gonzalofuentes1.github.io/assets/og-image.jpg">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<link rel="stylesheet" href="../../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Auditing LLM-JEPA: the gain disappears once the baseline learns to stop",
+  "description": "A reproduction of LLM-JEPA fine-tuning on NL-RX-SYNTH with Llama-3.2-1B: the reported gain comes from a pad = eos fallback that removes every end-of-turn target; with a dedicated pad token it disappears.",
+  "datePublished": "2026-11-22",
+  "inLanguage": "en",
+  "url": "https://gonzalofuentes1.github.io/en/notes/llm-jepa-audit.html",
+  "author": {"@type": "Person", "@id": "https://gonzalofuentes1.github.io/#person", "name": "Gonzalo Fuentes", "url": "https://gonzalofuentes1.github.io/en/"}
+}
+</script>
+</head>
+<body>
+<nav class="post-nav wrap" aria-label="Site"><a href="../#notes">&larr; Gonzalo Fuentes</a></nav>
+<main class="wrap">
+<article class="post">
+<header>
+<h1>Auditing LLM-JEPA: the gain disappears once the baseline learns to stop</h1>
+<p class="byline">Gonzalo Fuentes · November 2026 · code, logs and predictions: <a href="https://github.com/GonzaloFuentes1/llm-jepa-sigreg">github.com/GonzaloFuentes1/llm-jepa-sigreg</a></p>
+</header>
+<p><strong>TL;DR.</strong> I reproduced the LLM-JEPA fine-tuning result on NL-RX-SYNTH with Llama-3.2-1B-Instruct (Huang, LeCun and Balestriero, arXiv:2509.14252). The published numbers reproduce with the official code. They come from a padding fallback, <code>pad_token = eos_token</code>, that removes every end-of-turn target from the language-modeling loss. With a dedicated pad token, the baseline goes from 54.6% to 83.7% exact match and LLM-JEPA brings no gain (83.9%, paired p = 0.49). Adding SIGReg from LeJEPA to the JEPA embeddings does not help either. I opened a <a href="https://github.com/galilai-group/llm-jepa/pull/11">fix upstream</a>.</p>
+<h2 id="the-claim">The claim</h2>
+<p>LLM-JEPA adds a JEPA term to next-token prediction. Two views of the same example, the natural-language description and the regular expression, are embedded with the LLM itself, and their last-token embeddings are pulled together with a cosine loss. On NL-RX-SYNTH the paper reports exact match going from 57.29 ± 5.32 to 71.46 ± 1.34 for Llama-3.2-1B-Instruct.</p>
+<h2 id="reproduction">Reproduction</h2>
+<p>I re-implemented the official training path on one H100 per run, with the same global batch (128), optimizer, schedule, 4 epochs and seeds as <code>run.sh</code>, and evaluated on all 2,000 test examples. With the official padding:</p>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col"></th><th scope="col">paper</th><th scope="col">this reproduction</th></tr></thead>
+<tbody>
+<tr><th scope="row">regular fine-tuning</th><td>57.29 ± 5.32</td><td>54.55 ± 6.46</td></tr>
+<tr><th scope="row">LLM-JEPA (λ = 1)</th><td>71.46 ± 1.34</td><td>71.64 ± 2.38</td></tr>
+</tbody></table></div>
+<p>The +17-point gap reproduces, with a similar paired p-value.</p>
+<h2 id="what-the-pipeline-actually-trains-on">What the pipeline actually trains on</h2>
+<p>Llama's tokenizer has no pad token, so the official code falls back to <code>pad_token = eos_token</code>, which for Llama 3 is <code>&lt;|eot_id|&gt;</code>. <code>DataCollatorForLanguageModeling(mlm=False)</code> then masks every label equal to the pad id. That includes the three genuine <code>&lt;|eot_id|&gt;</code> tokens in each conversation. The model is never trained to end its answer. I checked this by running the official data path on real examples: in the first training example, 74 of 77 tokens are supervised, and the three missing ones are exactly the end-of-turn tokens.</p>
+<p>The JEPA embedding positions are not affected: the official code locates the last token with the attention mask, so it picks the same tokens with either pad.</p>
+<h2 id="the-gain-disappears-with-a-dedicated-pad-token">The gain disappears with a dedicated pad token</h2>
+<p>Changing only the pad token to the reserved <code>&lt;|finetune_right_pad_id|&gt;</code> (5 seeds each):</p>
+<div class="table-wrap"><table>
+<thead><tr><th scope="col"></th><th scope="col">pad = eos</th><th scope="col">dedicated pad</th></tr></thead>
+<tbody>
+<tr><th scope="row">regular</th><td>54.55 ± 6.46</td><td>83.74 ± 0.27</td></tr>
+<tr><th scope="row">LLM-JEPA, λ = 0.5</th><td>72.76 ± 1.74</td><td>83.79 ± 0.23</td></tr>
+<tr><th scope="row">LLM-JEPA, λ = 1</th><td>71.64 ± 2.38</td><td>83.85 ± 0.51</td></tr>
+<tr><th scope="row">LLM-JEPA, λ = 2</th><td>73.02 ± 1.43</td><td>83.72 ± 0.26</td></tr>
+</tbody></table></div>
+<p>With the end-of-turn token supervised, the paired differences against regular fine-tuning are +0.05, +0.11 and −0.02 points (two-sided p ≥ 0.49). The same holds with assistant-only labels (86.37 vs 86.27).</p>
+<h2 id="why-the-regex-is-right-the-model-just-does-not-stop">Why: the regex is right, the model just does not stop</h2>
+<p>In every condition about 84% of generations start with the exact reference regex. What changes is whether the model stops after it. With a dedicated pad, exact match equals prefix match. With pad = eos, regular fine-tuning often writes the right regex and keeps going, most often appending another <code>.*</code>. For one seed, 554 of its 863 errors are a correct answer followed by extra tokens. LLM-JEPA partly repairs this termination failure, which is where its apparent gain comes from. One plausible but unverified reason: the code-view embedding is taken at the last regex token, the position whose missing target is <code>&lt;|eot_id|&gt;</code>.</p>
+<h2 id="does-sigreg-help">Does SIGReg help?</h2>
+<p>LeJEPA argues that JEPA embeddings should be pushed towards an isotropic Gaussian with SIGReg. I added it to the stacked JEPA embeddings, with its weight chosen on a validation split carved from the training set. It lowers exact match at every λ: −0.3 to −1.1 points with β = 0.001 and −8 to −10 points with β = 0.01. It also makes results more sensitive to λ. In this setting next-token prediction already prevents collapse, so there is nothing for the regularizer to fix.</p>
+<h2 id="limitations">Limitations</h2>
+<p>One model, one dataset and five seeds. A single GPU per run instead of 8-GPU DDP, with the same global batch. Batched greedy decoding. This says nothing about LLM-JEPA on other model families: Gemma already has distinct pad and EOS tokens, and the paper reports gains there too. The point is narrower. On Llama, the regular baseline was trained without a stop signal, and that alone accounts for the reported gap on this task.</p>
+<h2 id="links">Links</h2>
+<ul>
+<li>Code, per-run metrics, logs and predictions: <a href="https://github.com/GonzaloFuentes1/llm-jepa-sigreg">llm-jepa-sigreg</a></li>
+<li>Upstream fix: <a href="https://github.com/galilai-group/llm-jepa/pull/11">galilai-group/llm-jepa#11</a>, related issues <a href="https://github.com/galilai-group/llm-jepa/issues/9">#9</a> and <a href="https://github.com/galilai-group/llm-jepa/issues/10">#10</a></li>
+<li>A fused Triton kernel for SIGReg written along the way: <a href="https://github.com/GonzaloFuentes1/sigreg-triton">sigreg-triton</a></li>
+</ul>
+</article>
+</main>
+<footer>
+  <div class="wrap">© 2026 Gonzalo Fuentes · Santiago, Chile · <a href="../">gonzalofuentes1.github.io</a></div>
+</footer>
+</body>
+</html>
